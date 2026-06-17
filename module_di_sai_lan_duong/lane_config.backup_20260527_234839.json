@@ -1,0 +1,104 @@
+{
+  "description": "Cau hinh hieu chuan theo video giai_doan_tim_bien/data/video.mp4, khung hinh 1920x1080.",
+  "lanes": {
+    "left": {
+      "name": "Lan re trai",
+      "allowed": [
+        "turn_left",
+        "u_turn"
+      ],
+      "polygon": [
+        [
+          0.1932,
+          0.4657
+        ],
+        [
+          0.4198,
+          0.4833
+        ],
+        [
+          0.4224,
+          0.9852
+        ],
+        [
+          0.0078,
+          0.9833
+        ]
+      ]
+    },
+    "straight": {
+      "name": "Lan di thang",
+      "allowed": [
+        "straight"
+      ],
+      "polygon": [
+        [
+          0.4177,
+          0.4796
+        ],
+        [
+          1.0,
+          0.4667
+        ],
+        [
+          0.9974,
+          0.9917
+        ],
+        [
+          0.4203,
+          0.9833
+        ]
+      ]
+    }
+  },
+  "direction_zones": {
+    "left_exit": [
+      [
+        0.2156,
+        0.1583
+      ],
+      [
+        0.3646,
+        0.1963
+      ],
+      [
+        0.4156,
+        0.4685
+      ],
+      [
+        0.1948,
+        0.4667
+      ]
+    ],
+    "straight_exit": [
+      [
+        0.3328,
+        0.0843
+      ],
+      [
+        0.6521,
+        0.0806
+      ],
+      [
+        1.0,
+        0.462
+      ],
+      [
+        0.4177,
+        0.4787
+      ]
+    ]
+  },
+  "stop_line_y": 0.49,
+  "direction": {
+    "require_exit_zone": true,
+    "left_turn_dx_negative": true,
+    "turn_dx_ratio": 0.18,
+    "straight_dx_ratio": 0.1,
+    "min_track_displacement_ratio": 0.08
+  },
+  "lane_change": {
+    "enabled": false,
+    "near_stop_line_ratio": 0.08
+  }
+}

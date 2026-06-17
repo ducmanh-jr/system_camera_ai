@@ -1,0 +1,142 @@
+Track ID,Loai Phuong Tien,Hop Le,So Diem,Frame Dau,Frame Cuoi,Lan Xuat Phat,Bang Chung Lan Xuat Phat,Chuoi Lan,Chuoi Vung Uu Tien,Chuoi Vung Quet Truc Tiep,Chuoi So,So Diem Tung Vung,Khoang Frame Tung Vung,Vung Dich Cuoi,Bang Chung Vung Dich Cuoi
+1,Car,yes,355,0,356,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=80; 5:far_straight_exit=199,4:straight_exit=20-99; 5:far_straight_exit=104-300|304-305,unknown,0/12; frame=unknown
+2,Car,yes,423,0,443,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=106; 5:far_straight_exit=181,4:straight_exit=55-160; 5:far_straight_exit=164-345,unknown,0/12; frame=unknown
+3,Car,yes,376,0,437,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=108; 5:far_straight_exit=209,4:straight_exit=57-164; 5:far_straight_exit=167-437,far_straight_exit,12/12; frame=437
+10,Truck,yes,516,0,519,left,10/10,left,left_exit,left_exit,1>3,3:left_exit=422,3:left_exit=94-519,left_exit,12/12; frame=519
+13,Car,yes,462,0,484,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=92; 5:far_straight_exit=142,4:straight_exit=101-192; 5:far_straight_exit=196-352,unknown,0/12; frame=unknown
+124,Car,yes,506,14,519,left,10/10,left,left_exit>straight_exit,left_exit>straight_exit,1>3>4,3:left_exit=56; 4:straight_exit=188,3:left_exit=274-329; 4:straight_exit=332-519,straight_exit,12/12; frame=519
+191,Motorcycle,yes,84,29,112,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=64,4:straight_exit=49-112,straight_exit,12/12; frame=112
+193,Car,yes,332,29,362,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=103; 5:far_straight_exit=145,4:straight_exit=109-211; 5:far_straight_exit=216-362,far_straight_exit,12/12; frame=362
+212,Motorcycle,yes,152,34,195,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=87; 5:far_straight_exit=15,4:straight_exit=83-169; 5:far_straight_exit=171-195,far_straight_exit,12/12; frame=195
+233,Motorcycle,no,5,39,44,left,3/3,left,unknown,unknown,1,none,none,unknown,0/5; frame=unknown
+274,Truck,yes,25,49,75,straight,8/8,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+296,Motorcycle,yes,290,55,351,left,10/10,left>straight,straight_exit>left_exit,straight_exit>left_exit,1>2>4>3,3:left_exit=76; 4:straight_exit=101,3:left_exit=271-351; 4:straight_exit=169-269,left_exit,12/12; frame=351
+311,Car,no,1,58,58,straight,1/1,straight,unknown,unknown,2,none,none,unknown,0/1; frame=unknown
+331,Motorcycle,yes,128,60,198,left,10/10,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+337,Motorcycle,no,2,61,65,left,2/2,left,unknown,unknown,1,none,none,unknown,0/2; frame=unknown
+341,Bus,yes,16,63,83,straight,5/5,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+342,Truck,no,2,63,64,straight,2/2,straight,unknown,unknown,2,none,none,unknown,0/2; frame=unknown
+344,Car,no,1,63,63,straight,1/1,straight,unknown,unknown,2,none,none,unknown,0/1; frame=unknown
+382,Car,yes,435,70,519,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=106; 5:far_straight_exit=246,4:straight_exit=149-254; 5:far_straight_exit=259-519,far_straight_exit,12/12; frame=519
+383,Motorcycle,no,5,70,83,left,3/3,left,unknown,unknown,1,none,none,unknown,0/5; frame=unknown
+410,Truck,yes,440,75,519,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=76; 5:far_straight_exit=273,4:straight_exit=100-175; 5:far_straight_exit=179-385|424-488|490-494,unknown,0/12; frame=unknown
+427,Motorcycle,yes,6,78,83,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/6; frame=unknown
+429,Motorcycle,no,1,83,83,straight,1/1,straight,unknown,unknown,2,none,none,unknown,0/1; frame=unknown
+453,Motorcycle,yes,77,84,181,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=43,4:straight_exit=120-181,straight_exit,12/12; frame=181
+456,Car,yes,421,82,505,straight,10/10,straight,straight_exit>left_exit,straight_exit>left_exit,2>4>3,3:left_exit=89; 4:straight_exit=159,3:left_exit=415-505; 4:straight_exit=254-413,left_exit,12/12; frame=505
+461,Truck,no,2,83,84,straight,2/2,straight,unknown,unknown,2,none,none,unknown,0/2; frame=unknown
+471,Motorcycle,yes,288,85,384,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=92; 5:far_straight_exit=115,4:straight_exit=162-253; 5:far_straight_exit=258-384,far_straight_exit,12/12; frame=384
+474,Motorcycle,yes,19,86,111,left,6/6,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+553,Motorcycle,yes,10,102,124,left,3/3,left,unknown,unknown,1,none,none,unknown,0/10; frame=unknown
+562,Motorcycle,yes,87,105,193,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=50,4:straight_exit=143-193,straight_exit,12/12; frame=193
+609,Motorcycle,no,3,118,120,left,3/3,left,unknown,unknown,1,none,none,unknown,0/3; frame=unknown
+612,Motorcycle,yes,140,119,279,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=78; 5:far_straight_exit=14,4:straight_exit=162-241; 5:far_straight_exit=244-244|250-279,far_straight_exit,12/12; frame=279
+646,Motorcycle,no,2,129,130,left,2/2,left,unknown,unknown,1,none,none,unknown,0/2; frame=unknown
+665,Motorcycle,yes,225,134,384,left,10/10,left,left_exit,left_exit,1>3,3:left_exit=6,3:left_exit=378-384,left_exit,6/12; frame=384
+682,Motorcycle,no,1,140,140,left,1/1,left,unknown,unknown,1,none,none,unknown,0/1; frame=unknown
+724,Motorcycle,no,3,152,154,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/3; frame=unknown
+728,Car,yes,367,153,519,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=94; 5:far_straight_exit=191,4:straight_exit=232-325; 5:far_straight_exit=329-519,far_straight_exit,12/12; frame=519
+738,Motorcycle,yes,81,156,236,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=69,4:straight_exit=168-236,straight_exit,12/12; frame=236
+747,Motorcycle,yes,25,157,190,left,8/8,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+823,Truck,yes,9,174,183,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/9; frame=unknown
+846,Motorcycle,yes,187,178,364,left,10/10,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+855,Car,yes,307,179,519,left,10/10,left,left_exit>straight_exit,left_exit>straight_exit,1>3>4,3:left_exit=46; 4:straight_exit=77,3:left_exit=392-441; 4:straight_exit=443-519,straight_exit,12/12; frame=519
+865,Car,yes,338,182,519,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=136; 5:far_straight_exit=60,4:straight_exit=317-452; 5:far_straight_exit=460-519,far_straight_exit,12/12; frame=519
+867,Motorcycle,yes,113,183,327,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=70; 5:far_straight_exit=4,4:straight_exit=248-317; 5:far_straight_exit=324-327,far_straight_exit,4/12; frame=327
+873,Truck,yes,35,185,221,straight,10/10,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+874,Motorcycle,yes,50,185,235,left,10/10,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+883,Motorcycle,yes,87,188,278,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=59,4:straight_exit=216-278,straight_exit,12/12; frame=278
+898,Motorcycle,no,3,190,192,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/3; frame=unknown
+910,Motorcycle,yes,21,194,216,straight,7/7,straight,straight_exit,straight_exit,2>4,4:straight_exit=11,4:straight_exit=204-216,straight_exit,11/12; frame=216
+916,Motorcycle,yes,64,195,269,left,10/10,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+954,Motorcycle,no,1,208,208,left,1/1,left,unknown,unknown,1,none,none,unknown,0/1; frame=unknown
+958,Car,yes,38,210,247,left,10/10,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+963,Car,yes,308,212,519,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=153; 5:far_straight_exit=29,4:straight_exit=333-485; 5:far_straight_exit=491-519,far_straight_exit,12/12; frame=519
+1065,Motorcycle,no,2,243,244,straight,2/2,straight,unknown,unknown,2,none,none,unknown,0/2; frame=unknown
+1066,Motorcycle,yes,276,243,519,left,10/10,left,left_exit,left_exit,1>3,3:left_exit=90,3:left_exit=428-429|432-519,left_exit,12/12; frame=519
+1085,Motorcycle,yes,6,247,260,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/6; frame=unknown
+1087,Motorcycle,no,3,247,250,left,3/3,left,unknown,unknown,1,none,none,unknown,0/3; frame=unknown
+1095,Motorcycle,no,4,248,257,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/4; frame=unknown
+1100,Car,yes,271,249,519,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=136,4:straight_exit=384-519,straight_exit,12/12; frame=519
+1103,Truck,yes,9,250,258,left,3/3,left,unknown,unknown,1,none,none,unknown,0/9; frame=unknown
+1114,Truck,yes,36,253,293,straight,10/10,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+1123,Motorcycle,yes,196,256,457,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=88; 5:far_straight_exit=84,4:straight_exit=279-366; 5:far_straight_exit=369-457,far_straight_exit,12/12; frame=457
+1148,Car,no,1,263,263,left,1/1,left,unknown,unknown,1,none,none,unknown,0/1; frame=unknown
+1152,Motorcycle,yes,29,483,519,left,9/9,left,left_exit,left_exit,1>3,3:left_exit=11,3:left_exit=503-519,left_exit,11/12; frame=519
+1162,Motorcycle,no,2,266,267,straight,2/2,straight,unknown,unknown,2,none,none,unknown,0/2; frame=unknown
+1167,Car,no,1,267,267,left,1/1,left,unknown,unknown,1,none,none,unknown,0/1; frame=unknown
+1175,Motorcycle,yes,156,268,424,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=75; 5:far_straight_exit=39,4:straight_exit=306-380; 5:far_straight_exit=385-424,far_straight_exit,12/12; frame=424
+1177,Motorcycle,no,3,269,271,left,3/3,left,unknown,unknown,1,none,none,unknown,0/3; frame=unknown
+1201,Motorcycle,yes,162,274,435,left,10/10,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+1206,Car,no,3,275,277,left,3/3,left,unknown,unknown,1,none,none,unknown,0/3; frame=unknown
+1211,Motorcycle,yes,107,276,382,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=75,4:straight_exit=308-382,straight_exit,12/12; frame=382
+1225,Motorcycle,yes,29,279,307,left,9/9,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+1233,Car,yes,239,281,519,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=95,4:straight_exit=425-519,straight_exit,12/12; frame=519
+1258,Motorcycle,yes,199,285,483,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=100; 5:far_straight_exit=35,4:straight_exit=346-445; 5:far_straight_exit=449-483,far_straight_exit,12/12; frame=483
+1264,Car,no,1,287,287,left,1/1,left,unknown,unknown,1,none,none,unknown,0/1; frame=unknown
+1292,Motorcycle,yes,29,293,324,straight,9/9,straight,straight_exit,straight_exit,2>4,4:straight_exit=3,4:straight_exit=319-324,straight_exit,3/12; frame=324
+1299,Motorcycle,yes,179,293,473,left,10/10,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+1306,Truck,no,2,295,296,left,2/2,left,unknown,unknown,1,none,none,unknown,0/2; frame=unknown
+1326,Motorcycle,yes,88,301,414,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=51,4:straight_exit=336-404|407-413,straight_exit,9/12; frame=411
+1354,Motorcycle,yes,64,307,371,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=47,4:straight_exit=324-371,straight_exit,12/12; frame=371
+1374,Truck,no,3,312,314,left,3/3,left,unknown,unknown,1,none,none,unknown,0/3; frame=unknown
+1393,Motorcycle,no,1,317,317,straight,1/1,straight,unknown,unknown,2,none,none,unknown,0/1; frame=unknown
+1395,Car,yes,202,318,519,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=103,4:straight_exit=417-519,straight_exit,12/12; frame=519
+1402,Motorcycle,yes,63,319,390,straight,5/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=57,4:straight_exit=325-390,straight_exit,12/12; frame=390
+1439,Motorcycle,yes,193,326,519,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=84; 5:far_straight_exit=79,4:straight_exit=352-435; 5:far_straight_exit=440-519,far_straight_exit,12/12; frame=519
+1455,Car,no,3,332,334,left,3/3,left,unknown,unknown,1,none,none,unknown,0/3; frame=unknown
+1483,Truck,no,1,337,337,left,1/1,left,unknown,unknown,1,none,none,unknown,0/1; frame=unknown
+1525,Truck,no,2,346,347,left,2/2,left,unknown,unknown,1,none,none,unknown,0/2; frame=unknown
+1538,Car,yes,20,349,368,left,6/6,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+1544,Truck,no,4,351,354,left,3/3,left,unknown,unknown,1,none,none,unknown,0/4; frame=unknown
+1547,Motorcycle,no,1,352,352,left,1/1,left,unknown,unknown,1,none,none,unknown,0/1; frame=unknown
+1589,Motorcycle,yes,162,358,519,left,10/10,left,left_exit,left_exit,1>3,3:left_exit=51,3:left_exit=469-519,left_exit,12/12; frame=519
+1598,Car,yes,155,359,519,straight,10/10,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+1618,Car,no,3,363,365,left,3/3,left,unknown,unknown,1,none,none,unknown,0/3; frame=unknown
+1625,Motorcycle,no,1,364,364,left,1/1,left,unknown,unknown,1,none,none,unknown,0/1; frame=unknown
+1648,Car,yes,152,368,519,straight,10/10,straight,straight_exit>far_straight_exit,straight_exit>far_straight_exit,2>4>5,4:straight_exit=94; 5:far_straight_exit=10,4:straight_exit=413-506; 5:far_straight_exit=510-519,far_straight_exit,10/12; frame=519
+1649,Truck,yes,148,368,519,left,10/10,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+1664,Car,no,2,371,372,left,2/2,left,unknown,unknown,1,none,none,unknown,0/2; frame=unknown
+1689,Car,yes,33,380,412,straight,10/10,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+1707,Car,yes,134,386,519,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=24,4:straight_exit=496-519,straight_exit,12/12; frame=519
+1714,Car,no,1,388,388,left,1/1,left,unknown,unknown,1,none,none,unknown,0/1; frame=unknown
+1832,Motorcycle,yes,6,409,414,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/6; frame=unknown
+1844,Motorcycle,no,5,410,414,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/5; frame=unknown
+1889,Motorcycle,yes,83,416,499,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=43,4:straight_exit=456-499,straight_exit,12/12; frame=499
+1907,Motorcycle,no,2,418,421,straight,2/2,straight,unknown,unknown,2,none,none,unknown,0/2; frame=unknown
+1923,Motorcycle,no,2,422,423,straight,2/2,straight,unknown,unknown,2,none,none,unknown,0/2; frame=unknown
+1935,Truck,no,5,424,428,left,3/3,left,unknown,unknown,1,none,none,unknown,0/5; frame=unknown
+1936,Motorcycle,yes,30,424,457,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=5,4:straight_exit=450-457,straight_exit,5/12; frame=457
+1943,Motorcycle,no,5,425,510,straight,2/3,straight,straight_exit,straight_exit,2>4,4:straight_exit=3,4:straight_exit=505-510,straight_exit,3/5; frame=510
+1944,Car,yes,19,425,443,straight,6/6,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+1949,Car,yes,94,426,519,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=29,4:straight_exit=443-471,unknown,0/12; frame=unknown
+1975,Motorcycle,yes,69,430,519,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=22,4:straight_exit=483-519,straight_exit,12/12; frame=519
+1986,Truck,yes,13,433,445,left,4/4,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+2000,Motorcycle,no,5,438,442,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/5; frame=unknown
+2012,Car,yes,78,442,519,straight,10/10,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+2014,Motorcycle,yes,53,443,495,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=18,4:straight_exit=478-495,straight_exit,12/12; frame=495
+2016,Car,yes,77,443,519,straight,10/10,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+2052,Truck,yes,50,450,513,straight,10/10,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+2070,Motorcycle,yes,63,456,519,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=14,4:straight_exit=506-519,straight_exit,12/12; frame=519
+2082,Truck,no,4,459,462,left,3/3,left,unknown,unknown,1,none,none,unknown,0/4; frame=unknown
+2099,Truck,no,3,465,467,left,3/3,left,unknown,unknown,1,none,none,unknown,0/3; frame=unknown
+2111,Car,yes,31,470,500,straight,10/10,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+2114,Car,yes,50,470,519,left,10/10,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+2117,Car,no,4,471,474,left,3/3,left,unknown,unknown,1,none,none,unknown,0/4; frame=unknown
+2140,Motorcycle,no,1,475,475,left,1/1,left,unknown,unknown,1,none,none,unknown,0/1; frame=unknown
+2149,Truck,yes,22,477,498,left,7/7,left,unknown,unknown,1,none,none,unknown,0/12; frame=unknown
+2154,Motorcycle,yes,42,478,519,straight,10/10,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+2168,Motorcycle,no,2,480,481,left,2/2,left,unknown,unknown,1,none,none,unknown,0/2; frame=unknown
+2186,Motorcycle,no,3,485,487,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/3; frame=unknown
+2213,Motorcycle,yes,30,490,519,straight,10/10,straight,straight_exit,straight_exit,2>4,4:straight_exit=8,4:straight_exit=512-519,straight_exit,8/12; frame=519
+2229,Motorcycle,yes,25,492,519,straight,8/8,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+2236,Truck,yes,6,493,498,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/6; frame=unknown
+2264,Truck,yes,22,498,519,straight,7/7,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+2278,Car,no,5,501,505,left,3/3,left,unknown,unknown,1,none,none,unknown,0/5; frame=unknown
+2295,Car,yes,15,505,519,straight,5/5,straight,unknown,unknown,2,none,none,unknown,0/12; frame=unknown
+2314,Motorcycle,yes,10,508,517,straight,3/3,straight,straight_exit,straight_exit,2>4,4:straight_exit=4,4:straight_exit=514-517,straight_exit,4/10; frame=517
+2328,Car,no,2,509,510,left,2/2,left,unknown,unknown,1,none,none,unknown,0/2; frame=unknown
+2338,Motorcycle,no,4,512,515,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/4; frame=unknown
+2342,Motorcycle,yes,7,513,519,straight,3/3,straight,unknown,unknown,2,none,none,unknown,0/7; frame=unknown
+2351,Car,no,5,515,519,left,3/3,left,unknown,unknown,1,none,none,unknown,0/5; frame=unknown
+2363,Motorcycle,no,2,518,519,straight,2/2,straight,unknown,unknown,2,none,none,unknown,0/2; frame=unknown

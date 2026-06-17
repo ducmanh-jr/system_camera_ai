@@ -1,0 +1,7 @@
+V002 | CASE_4 | Track 456 | Car
+Lan xuat phat: straight | Huong: turn_left
+Frame review: frame cuoi track 505
+Hanh vi: Re trai tren lan duong bat buoc di thang
+Muc phat: 400.000 - 600.000 VND
+Anh xe ro nhat: frame 150 | score 0.452 | sharp 567.4
+Bang chung: start_lane=straight (10/10 diem dau); sequence=2>4>3; direction=turn_left; final_exit_zone=left_exit (12/12 diem cuoi); exit_frame=505; zone_sequence=straight_exit>left_exit

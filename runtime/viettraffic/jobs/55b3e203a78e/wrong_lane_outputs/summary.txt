@@ -1,0 +1,21 @@
+BAO CAO PHAT HIEN XE DI SAI LAN
+Thoi gian chay: 2026-06-17 14:39:02
+Tong track hop le: 141
+Tong phuong tien vi pham: 2
+
+Thong ke theo truong hop:
+- CASE_4: 1
+- CASE_6: 1
+
+Luat ap dung:
+- Can cu: Nghi dinh 168/2024/ND-CP
+- Ten loi: Khong chap hanh hieu lenh, chi dan cua bien bao hieu, vach ke duong
+- O to/xe tai/xe khach: 400.000 - 600.000 VND
+- Xe may: 100.000 - 200.000 VND
+
+File ket qua:
+- CSV: C:\Users\Admin\ducmanhjr\main\ducmanh-jrsystem_camera_ai main\runtime\viettraffic\jobs\55b3e203a78e\wrong_lane_outputs\violations.csv
+- DB: C:\Users\Admin\ducmanhjr\main\ducmanh-jrsystem_camera_ai main\runtime\viettraffic\jobs\55b3e203a78e\wrong_lane_outputs\violations.db
+- Lich su vung theo track: C:\Users\Admin\ducmanhjr\main\ducmanh-jrsystem_camera_ai main\runtime\viettraffic\jobs\55b3e203a78e\wrong_lane_outputs\track_zone_history.csv
+- Anh xe vi pham: C:\Users\Admin\ducmanhjr\main\ducmanh-jrsystem_camera_ai main\runtime\viettraffic\jobs\55b3e203a78e\wrong_lane_outputs\violating_vehicles
+- Anh review: C:\Users\Admin\ducmanhjr\main\ducmanh-jrsystem_camera_ai main\runtime\viettraffic\jobs\55b3e203a78e\wrong_lane_outputs\reviews

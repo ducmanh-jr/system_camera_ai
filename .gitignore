@@ -135,3 +135,7 @@ cython_debug/
 *.njsproj
 *.sln
 *.sw?
+
+# Local runtime directories
+demo/runtime/
+

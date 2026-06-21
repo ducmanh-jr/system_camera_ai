@@ -1,7 +1,0 @@
-V001 | CASE_6 | Track 296 | Motorcycle
-Lan xuat phat: left | Huong: turn_left
-Frame review: frame cuoi track 351
-Hanh vi: Doi sang lan di thang hoac vung di thang roi moi re trai
-Muc phat: 100.000 - 200.000 VND
-Anh xe ro nhat: frame 93 | score 0.365 | sharp 925.7
-Bang chung: start_lane=left (10/10 diem dau); sequence=1>2>4>3; lane_sequence=left>straight; zone_sequence=straight_exit>left_exit; final_exit_zone=left_exit (12/12 diem cuoi)

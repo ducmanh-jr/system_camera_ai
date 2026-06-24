@@ -101,6 +101,57 @@ def validate_vietnamese_plate(plate: str) -> bool:
 
 
 # ---------------------------------------------------------------------------
+# Helper function and model loader for improved models
+# ---------------------------------------------------------------------------
+
+def _plate_validity_score(text: str) -> int:
+    plate = _clean_label(text)
+    score = 0
+    if 7 <= len(plate) <= 10:
+        score += 2
+    if re.match(r'^\d{2}', plate):
+        score += 2
+    if re.match(r'^\d{2}[A-Z\u0110]', plate):
+        score += 2
+    if re.match(r'^\d{2}([A-Z\u0110]|[A-Z\u0110][0-9])[0-9]{4,5}$', plate):
+        score += 5
+    return score
+
+
+_cai_tien_1_predictor = None
+_cai_tien_2_predictor = None
+
+def _get_cai_tien_predictor(model_name: str) -> Any:
+    global _cai_tien_1_predictor, _cai_tien_2_predictor
+    if model_name == "train_cai_tien_1":
+        if _cai_tien_1_predictor is None:
+            import sys
+            parent_path = ROOT_DIR / 'huong_cai_tien' / 'train_cai_tien_1'
+            if str(parent_path) not in sys.path:
+                sys.path.insert(0, str(parent_path))
+            from src.inference.predictor import Predictor
+            _cai_tien_1_predictor = Predictor.from_checkpoint(
+                str(parent_path / 'runs' / 'crnn_base' / 'best.pt'),
+                device='cpu'
+            )
+        return _cai_tien_1_predictor
+    elif model_name == "train_cai_tien_2":
+        if _cai_tien_2_predictor is None:
+            import sys
+            parent_path = ROOT_DIR / 'huong_cai_tien' / 'train_cai_tien_1'
+            if str(parent_path) not in sys.path:
+                sys.path.insert(0, str(parent_path))
+            from src.inference.predictor import Predictor
+            ckpt_path = ROOT_DIR / 'huong_cai_tien' / 'train_cai_tien_2' / 'runs' / 'crnn_base' / 'best.pt'
+            _cai_tien_2_predictor = Predictor.from_checkpoint(
+                str(ckpt_path),
+                device='cpu'
+            )
+        return _cai_tien_2_predictor
+    return None
+
+
+# ---------------------------------------------------------------------------
 # OCR Adapter – uses ONLY train_ocr ensemble
 # ---------------------------------------------------------------------------
 
@@ -158,34 +209,45 @@ class VietnamesePlateOCR:
         bottom = cv2.resize(bottom, (bottom.shape[1], target_h))
         return np.concatenate((top, bottom), axis=1)
 
-    def read_image(self, image_path: Path) -> OCRResult:
+    def read_image(self, image_path: Path, model_name: str = "ensemble") -> OCRResult:
         image = cv2.imread(str(image_path))
         if image is None or image.size == 0:
-            return OCRResult("", "", 0.0, False, "train_ocr")
+            return OCRResult("", "", 0.0, False, model_name)
 
         crop = self._stitch_if_two_line(image)
 
-        # Save stitched crop to a temp file because the ensemble expects a Path
-        temp_dir = Path(tempfile.gettempdir())
-        temp_path = temp_dir / f"temp_plate_{uuid.uuid4().hex[:8]}.png"
-
         raw = ""
         conf = 0.0
-        try:
-            cv2.imwrite(str(temp_path), crop)
-            ensemble = self._load()
-            best_cand, candidates = ensemble.predict(temp_path)
-            raw = best_cand.text
-            conf = min(0.99, max(0.1, best_cand.validity / 12.0))
-        except Exception:
-            raw = ""
-            conf = 0.0
-        finally:
-            if temp_path.exists():
-                try:
-                    temp_path.unlink()
-                except Exception:
-                    pass
+
+        if model_name in ("train_cai_tien_1", "train_cai_tien_2"):
+            try:
+                predictor = _get_cai_tien_predictor(model_name)
+                raw = predictor.predict_image(crop)
+                score = _plate_validity_score(raw)
+                conf = min(0.99, max(0.1, score / 12.0))
+            except Exception as e:
+                print(f"Error predicting with {model_name}: {e}")
+                raw = ""
+                conf = 0.0
+        else:
+            # Save stitched crop to a temp file because the ensemble expects a Path
+            temp_dir = Path(tempfile.gettempdir())
+            temp_path = temp_dir / f"temp_plate_{uuid.uuid4().hex[:8]}.png"
+            try:
+                cv2.imwrite(str(temp_path), crop)
+                ensemble = self._load()
+                best_cand, candidates = ensemble.predict(temp_path)
+                raw = best_cand.text
+                conf = min(0.99, max(0.1, best_cand.validity / 12.0))
+            except Exception:
+                raw = ""
+                conf = 0.0
+            finally:
+                if temp_path.exists():
+                    try:
+                        temp_path.unlink()
+                    except Exception:
+                        pass
 
         plate = correct_plate_characters(raw)
         return OCRResult(
@@ -193,5 +255,5 @@ class VietnamesePlateOCR:
             plate=plate,
             confidence=round(conf, 4),
             valid=validate_vietnamese_plate(plate),
-            source="train_ocr",
+            source="train" if model_name == "ensemble" else model_name,
         )

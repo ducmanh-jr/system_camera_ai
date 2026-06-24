@@ -13,8 +13,8 @@ from ultralytics import YOLO
 
 BASE_DIR = Path(__file__).resolve().parent
 ROOT_DIR = BASE_DIR.parent
-DEFAULT_VIDEO_PATH = ROOT_DIR / "giai_doan_tim_bien" / "data" / "video.mp4"
-DEFAULT_MODEL_PATH = ROOT_DIR / "giai_doan_tim_bien" / "models" / "yolov8m.pt"
+DEFAULT_VIDEO_PATH = ROOT_DIR / "find_license_plate" / "data" / "video.mp4"
+DEFAULT_MODEL_PATH = ROOT_DIR / "find_license_plate" / "models" / "yolov8m.pt"
 FALLBACK_MODEL_PATH = ROOT_DIR / "giai_doan_tien_xu_ly" / "yolov8m.pt"
 DEFAULT_CONFIG_PATH = BASE_DIR / "lane_config.json"
 OUTPUTS_DIR = BASE_DIR / "outputs"

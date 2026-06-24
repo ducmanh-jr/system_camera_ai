@@ -1595,6 +1595,7 @@
       loading: false,
       result: null,      // last API response
       previewUrl: null,  // object URL for the selected local file
+      model: localStorage.getItem("tt_model") === "ensemble" ? "train" : (localStorage.getItem("tt_model") || "train"),
       history: (() => {
         try {
           return JSON.parse(localStorage.getItem("tt_history")) || [];
@@ -1653,7 +1654,13 @@
             Test Train — Kiểm thử Nhận diện Biển số
           </div>
           <div style="display:flex;align-items:center;gap:8px;">
-            <span class="badge info" style="font-size:11px;"><i class="ti ti-brain"></i> train ocr</span>
+            <label style="font-size:11px;font-weight:600;color:var(--muted);">Chọn model:</label>
+            <select id="ttModelSelect" style="height:28px;font-size:11px;padding:0 8px;border-radius:6px;border:1px solid var(--line);background:var(--panel2);color:var(--text);cursor:pointer;outline:none;">
+              <option value="train" ${ttState.model === 'train' ? 'selected' : ''}>Train (Mặc định)</option>
+              <option value="train_cai_tien_1" ${ttState.model === 'train_cai_tien_1' ? 'selected' : ''}>Cải tiến 1</option>
+              <option value="train_cai_tien_2" ${ttState.model === 'train_cai_tien_2' ? 'selected' : ''}>Cải tiến 2</option>
+            </select>
+            <span class="badge info" style="font-size:11px;"><i class="ti ti-brain"></i> ${ttState.model === 'train' ? 'Train' : ttState.model === 'train_cai_tien_1' ? 'Cải tiến 1' : 'Cải tiến 2'}</span>
             ${ttState.history.length ? `<span class="badge" style="font-size:11px;">${ttState.history.length} lần test</span>` : ''}
           </div>
         </div>
@@ -1709,7 +1716,7 @@
               <div class="tt-kv"><span><i class="ti ti-file-description"></i> File</span><b style="font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(r.filename || '--')}</b></div>
               ${cropUrl ? `<div class="tt-kv"><span><i class="ti ti-crop"></i> Crop biển số</span><img class="tt-crop-img" src="${esc(cropUrl)}" alt="crop"></div>` : ''}
               ${imageUrl ? `<div class="tt-kv"><span><i class="ti ti-external-link"></i> Ảnh gốc</span><a class="btn" href="${esc(imageUrl)}" target="_blank" style="height:26px;font-size:11px;">Mở</a></div>` : ''}
-            </div>` : `<div style="padding:24px;text-align:center;color:var(--faint);font-size:13px;"><i class="ti ti-flask" style="font-size:36px;display:block;margin-bottom:10px;"></i>Chọn ảnh để bắt đầu test<br>Pipeline: YOLO detect → Crop → OCR Ensemble</div>`}
+            </div>` : `<div style="padding:24px;text-align:center;color:var(--faint);font-size:13px;"><i class="ti ti-flask" style="font-size:36px;display:block;margin-bottom:10px;"></i>Chọn ảnh để bắt đầu test<br>Pipeline: YOLO detect → Crop → OCR Train</div>`}
           </div>
         </div>
 
@@ -1725,6 +1732,7 @@
       // Wire up events
       const dropZone = $("ttDropZone");
       const fileInput = $("ttFileInput");
+      const modelSelect = $("ttModelSelect");
 
       dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("drag-over"); });
       dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
@@ -1737,6 +1745,14 @@
         const files = [...fileInput.files];
         if (files.length) ttRunBatch(files);
       });
+
+      if (modelSelect) {
+        modelSelect.addEventListener("change", () => {
+          ttState.model = modelSelect.value;
+          localStorage.setItem("tt_model", ttState.model);
+          renderTestTrain();
+        });
+      }
 
       $("ttClearBtn")?.addEventListener("click", () => {
         ttState.history = []; ttState.result = null; ttState.previewUrl = null;
@@ -1764,6 +1780,7 @@
         try {
           const form = new FormData();
           form.append("image", file);
+          form.append("model", ttState.model);
           const data = await api("/api/ocr/test", { method: "POST", body: form });
           ttState.result = data;
           ttState.history.unshift(data);

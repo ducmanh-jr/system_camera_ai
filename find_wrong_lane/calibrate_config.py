@@ -11,7 +11,7 @@ import cv2
 
 BASE_DIR = Path(__file__).resolve().parent
 ROOT_DIR = BASE_DIR.parent
-DEFAULT_VIDEO_PATH = ROOT_DIR / "giai_doan_tim_bien" / "data" / "video.mp4"
+DEFAULT_VIDEO_PATH = ROOT_DIR / "find_license_plate" / "data" / "video.mp4"
 DEFAULT_CONFIG_PATH = BASE_DIR / "lane_config.json"
 DEFAULT_FRAME_ID = 100
 WINDOW_NAME = "Wrong lane config calibrator"

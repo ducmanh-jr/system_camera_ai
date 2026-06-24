@@ -918,7 +918,10 @@ def list_parking_images() -> dict[str, Any]:
 
 
 @app.post("/api/ocr/test")
-async def ocr_test(image: UploadFile = File(...)) -> dict[str, Any]:
+async def ocr_test(
+    image: UploadFile = File(...),
+    model: str = Form("train"),
+) -> dict[str, Any]:
     """Upload a single image, run YOLO plate detection + OCR, return detailed results."""
     suffix = Path(image.filename or "test.jpg").suffix or ".jpg"
     test_id = f"ocrtest_{uuid.uuid4().hex[:10]}{suffix}"
@@ -984,7 +987,7 @@ async def ocr_test(image: UploadFile = File(...)) -> dict[str, Any]:
             result["detection"]["crop_url"] = None
             ocr_input = save_path
 
-        ocr = _get_ocr().read_image(ocr_input)  # reuse cached model
+        ocr = _get_ocr().read_image(ocr_input, model_name=model)  # reuse cached model
         result["ocr"] = {
             "raw": ocr.raw,
             "plate": ocr.plate,
@@ -997,7 +1000,7 @@ async def ocr_test(image: UploadFile = File(...)) -> dict[str, Any]:
     except Exception as exc:
         result["error"] = str(exc)
         try:
-            ocr = _get_ocr().read_image(save_path)  # reuse cached model
+            ocr = _get_ocr().read_image(save_path, model_name=model)  # reuse cached model
             result["ocr"] = {
                 "raw": ocr.raw,
                 "plate": ocr.plate,

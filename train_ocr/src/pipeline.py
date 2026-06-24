@@ -1,4 +1,4 @@
-﻿"""
+"""
 Nhan dien bien so bang ensemble OCR tot nhat trong workspace nay.
 
 Chay 1 anh:
@@ -496,7 +496,7 @@ class Candidate:
 class PlateOCREnsemble:
     def __init__(self):
         self.predictors = [
-            PaddleOCRPredictor("train1_paddleocr", ROOT_DIR / "models" / "train1"),
+            PaddleOCRPredictor("train1_paddleocr", ROOT_DIR.parent / "support"),
             TorchCTCPredictor("train2_best_ema", ROOT_DIR / "models" / "train2" / "best_ema.pt"),
         ]
         # Uu tien khi diem bang nhau: train2 la model moi, train1 la model bo tro.

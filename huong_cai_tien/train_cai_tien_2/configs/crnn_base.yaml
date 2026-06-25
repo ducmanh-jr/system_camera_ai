@@ -1,0 +1,84 @@
+# ===========================================================
+# VN-ALPR OCR — CRNN base config (train from scratch)
+# ===========================================================
+project: vn_alpr_ocr
+experiment: crnn_base
+seed: 42
+
+# ---------- Data ----------
+data:
+  root: /sessions/exciting-funny-cerf/mnt/ocr_dataset_/content/ocr_dataset # ABSOLUTE PATH ON YOUR MACHINE
+  train_split: train # subdir + train_labels.txt
+  val_split: val
+  test_split: test
+  img_height: 48
+  img_width: 192
+  grayscale: true
+  apply_clahe: true
+  num_workers: 4
+  pin_memory: true
+  # synthetic dataset (optional)
+  synthetic_dir: null # set to a path produced by scripts/gen_synthetic.py
+  synthetic_ratio: 0.8 # nếu set synthetic_dir, mỗi epoch sample tỉ lệ này từ synth
+
+# ---------- Vocab ----------
+vocab:
+  # Charset suy ra từ dataset: 0-9 + A-Z (không W) + space + Đ (biển quân đội/đặc biệt)
+  # Liệt kê tường minh để reproducible & deploy ổn định.
+  # Lưu ý: Đ (U+0110) xuất hiện ở 305/9752 mẫu train, ví dụ "60MĐ2 03979".
+  charset: "0123456789ABCDEFGHIJKLMNOPQRSTUVXYZĐ "
+  # Lưu ý: index 0 sẽ là CTC blank, không trùng với ký tự nào.
+
+# ---------- Model ----------
+model:
+  name: crnn_vnplate
+  backbone:
+    type: vgg_lite # 'vgg_lite' | 'resnet_lite'
+    channels: [64, 128, 256, 512, 512]
+    norm: gn # gn | bn | in
+    gn_groups: 8
+  neck:
+    type: bilstm # 'bilstm' | 'transformer' | 'none'
+    hidden: 256
+    num_layers: 2
+    dropout: 0.25
+    bidirectional: true
+  head:
+    type: ctc
+    dropout: 0.15
+
+# ---------- Loss ----------
+loss:
+  ctc:
+    blank_index: 0
+    zero_infinity: true
+    entropy_weight: 0.02 # 0 to disable entropy regularizer
+
+# ---------- Optimizer / Scheduler ----------
+optim:
+  optimizer: adamw # adamw | sgd
+  lr: 1.5e-3
+  weight_decay: 2.0e-4
+  betas: [0.9, 0.999]
+  scheduler: onecycle # onecycle | cosine_warm_restart | step
+  warmup_epochs: 5
+  grad_clip: 3.0
+
+# ---------- Train ----------
+train:
+  batch_size: 64
+  epochs: 200
+  amp: true
+  ema: true
+  ema_decay: 0.999
+  early_stop_patience: 25
+  log_every: 50
+  ckpt_every_epoch: 5
+  resume: null
+  ddp: false
+
+# ---------- Output ----------
+output:
+  dir: runs/crnn_base
+  tensorboard: true
+  wandb: false

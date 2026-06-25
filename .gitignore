@@ -139,3 +139,11 @@ cython_debug/
 # Local runtime directories
 demo/runtime/
 
+# Model weights and training outputs
+*.pt
+*.pth
+*.zip
+train_ocr/detected_plate_crops/
+train_ocr/ensemble_predictions.csv
+train_ocr_input/output/
+

@@ -1,0 +1,4 @@
+Model,Num Images,Character Accuracy (%),CER (%),Plate Accuracy (%),Plates Correct,Plates Wrong,Avg Latency (ms),Total Time (s)
+Model 1 (CRNN v1),1219,95.25,4.86,83.10,1013,206,37.9,46.2
+Model 2 (CRNN v2),1219,95.25,4.86,83.10,1013,206,34.5,42.0
+Model 3 (Ensemble),1219,93.45,6.63,75.80,924,295,62.0,75.5

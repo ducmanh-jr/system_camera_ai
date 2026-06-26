@@ -1,20 +1,20 @@
-epochs: 280
-batch_size: 128
-num_workers: 4
-synthetic_ratio: 5
-multi_sizes: "40x160,48x192,56x224"
-img_h: 48
-img_w: 192
-model_dim: 256
-layers: 8
-heads: 8
-dropout: 0.22
-lr: 0.0003
-weight_decay: 0.08
-warmup_steps: 2400
-ema_decay: 0.9995
-semantic_weight: 0.10
-hard_multiplier: 1
-seed: 42
-amp: true
-patience: 40
+epochs: 280                      # Số lượt huấn luyện toàn bộ tập dữ liệu (280 vòng)
+batch_size: 128                  # Số lượng mẫu dữ liệu xử lý trong mỗi bước (bước cập nhật trọng số)
+num_workers: 4                   # Số luồng CPU dùng để tải và tiền xử lý dữ liệu song song
+synthetic_ratio: 5               # Tỷ lệ dữ liệu tổng hợp (synthetic) được thêm vào so với dữ liệu thật
+multi_sizes: "40x160,48x192,56x224" # Các kích thước ảnh đầu vào cấu hình cho huấn luyện đa quy mô (Multi-scale)
+img_h: 48                        # Chiều cao mặc định của ảnh đầu vào (48 pixel)
+img_w: 192                       # Chiều rộng mặc định của ảnh đầu vào (192 pixel)
+model_dim: 256                   # Số chiều ẩn (Embedding dimension) của mô hình (ví dụ: trong Transformer)
+layers: 8                        # Số lượng tầng (layers) trong kiến trúc mô hình
+heads: 8                         # Số đầu chú ý (Attention heads) trong cơ chế Multi-Head Attention
+dropout: 0.22                    # Tỷ lệ ngắt kết nối ngẫu nhiên để chống quá khớp (Overfitting) là 22%
+lr: 0.0003                       # Tốc độ học ban đầu (Learning Rate = 3e-4)
+weight_decay: 0.08               # Hệ số phạt độ lớn trọng số (L2 regularization) giúp giảm overfitting
+warmup_steps: 2400               # Số bước tăng dần tốc độ học từ 0 lên mức chỉ định ở giai đoạn đầu
+ema_decay: 0.9995                # Hệ số suy giảm của Trung bình động lũy thừa (Exponential Moving Average) để mượt trọng số
+semantic_weight: 0.10            # Trọng số hàm mất mát (loss weight) cho nhánh phân tách ngữ nghĩa (Semantic)
+hard_multiplier: 1               # Hệ số nhân để tăng cường độ khó/trọng số cho các mẫu dữ liệu khó (Hard negative/example)
+seed: 42                         # Giá trị thiết lập ngẫu nhiên cố định để đảm bảo kết quả có thể tái lặp lại
+amp: true                        # Bật chế độ tự động tính toán với độ chính xác hỗn hợp (Automatic Mixed Precision - FP16) giúp lưu và chạy nhanh hơn
+patience: 40                     # Số epoch tối đa chờ đợi nếu loss không cải thiện trước khi dừng sớm (Early Stopping)

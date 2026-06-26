@@ -1,0 +1,71 @@
+# Lightweight config (~0.9M params) cho deploy realtime cực nhanh trên CPU / edge
+project: vn_alpr_ocr
+experiment: crnn_small
+seed: 42
+
+data:
+  root: /sessions/exciting-funny-cerf/mnt/ocr_dataset_/content/ocr_dataset
+  train_split: train
+  val_split: val
+  test_split: test
+  img_height: 48
+  img_width: 192
+  grayscale: true
+  apply_clahe: true
+  num_workers: 4
+  pin_memory: true
+  synthetic_dir: null
+  synthetic_ratio: 0.8
+
+vocab:
+  # 0-9 + A-Z (no W) + Đ (military/police plates) + space
+  charset: "0123456789ABCDEFGHIJKLMNOPQRSTUVXYZĐ "
+
+model:
+  name: crnn_vnplate
+  backbone:
+    type: vgg_lite
+    channels: [32, 64, 128, 256, 256]
+    norm: gn
+    gn_groups: 8
+  neck:
+    type: bilstm
+    hidden: 128
+    num_layers: 2
+    dropout: 0.1
+    bidirectional: true
+  head:
+    type: ctc
+    dropout: 0.1
+
+loss:
+  ctc:
+    blank_index: 0
+    zero_infinity: true
+    entropy_weight: 0.01
+
+optim:
+  optimizer: adamw
+  lr: 3.0e-3
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.999]
+  scheduler: onecycle
+  warmup_epochs: 3
+  grad_clip: 5.0
+
+train:
+  batch_size: 128
+  epochs: 200
+  amp: true
+  ema: true
+  ema_decay: 0.999
+  early_stop_patience: 25
+  log_every: 50
+  ckpt_every_epoch: 5
+  resume: null
+  ddp: false
+
+output:
+  dir: runs/crnn_small
+  tensorboard: true
+  wandb: false

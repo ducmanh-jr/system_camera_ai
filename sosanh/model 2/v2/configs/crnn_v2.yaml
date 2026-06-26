@@ -1,0 +1,141 @@
+# =============================================================================
+# VN-ALPR OCR — CRNN v2 (Optimized for accuracy + stability + production)
+# =============================================================================
+# Why v2 vs v1:
+#  1) Stronger augmentation tuned to digit-confusion errors (0/8, 6/8, 1/7, 3/8, ...)
+#  2) BatchNorm in backbone (faster convergence, better digit discrimination than GN
+#     when batch >= 64), with optional GN fallback flag for tiny batch.
+#  3) Longer warmup + smaller initial LR (CTC alignment phase is fragile).
+#  4) Label smoothing in CTC posterior + entropy temperature schedule.
+#  5) Variational dropout in BiLSTM, increased neck width 256 -> 320.
+#  6) Train uses RandAug-OCR + CutOut (CoarseDropout) + RandomErasing.
+#  7) Gradient accumulation default = 2 -> effective batch 128 (better digit feature).
+#  8) EMA decay scaled by step count.
+#  9) Optional knowledge distillation from teacher checkpoint (best.pt v1).
+# =============================================================================
+
+project: vn_alpr_ocr
+experiment: crnn_v2
+seed: 42
+
+# ----------------------------- Data -----------------------------
+data:
+  root: /kaggle/input/datasets/trcng23/nhan-dien-bien-so-xe/ocr_dataset_/content/ocr_dataset
+  train_split: train
+  val_split: val
+  test_split: test
+  img_height: 48
+  img_width: 192
+  grayscale: true
+  apply_clahe: true
+  num_workers: 4
+  pin_memory: true
+  # Weighted sampling for rare-character samples (O,I,J,Y,R,U,Z,X,S,V, Đ).
+  weighted_sampler: true
+  rare_char_boost: 4.0          # samples containing rare chars are sampled ×4
+  # synthetic dataset (recommended: generate ~50K -> 80K plates)
+  synthetic_dir: null
+  synthetic_ratio: 0.6          # epoch composition: 60% synthetic, 40% real
+
+# ----------------------------- Vocab ----------------------------
+vocab:
+  # 0-9 + A-Z (no W) + Đ (military/police) + space.
+  # CTC blank = index 0 (NOT in this string).
+  charset: "0123456789ABCDEFGHIJKLMNOPQRSTUVXYZĐ "
+
+# ----------------------------- Model ----------------------------
+model:
+  name: crnn_vnplate_v2
+  backbone:
+    type: vgg_lite
+    channels: [64, 128, 256, 512, 512]
+    norm: bn                  # 'bn' converges faster for >=64 batch; 'gn' if small batch
+    gn_groups: 8
+    se: true                  # add Squeeze-Excitation in blocks 3-5 (tiny FLOPs cost)
+    stochastic_depth: 0.1     # random layer dropout in last 2 blocks
+  neck:
+    type: bilstm
+    hidden: 320               # was 256 → more capacity for digit disambiguation
+    num_layers: 2
+    dropout: 0.30             # Variational dropout (between LSTM layers)
+    bidirectional: true
+  head:
+    type: ctc
+    dropout: 0.20
+
+# ----------------------------- Loss -----------------------------
+loss:
+  ctc:
+    blank_index: 0
+    zero_infinity: true
+    entropy_weight: 0.015     # entropy regularization on posterior
+    label_smoothing: 0.05     # soft target distribution for CTC (KL-style)
+  # Optional knowledge distillation (set teacher_ckpt to enable)
+  distill:
+    teacher_ckpt: null        # e.g. runs/crnn_base/best.pt
+    alpha: 0.5                # weight of KD loss vs main CTC
+    temperature: 2.0
+
+# ----------------------- Optimizer / Scheduler -----------------------
+optim:
+  optimizer: adamw            # adamw | lion | sgd
+  lr: 1.2e-3                  # reduced from 1.5e-3 (v1) — earlier instability
+  weight_decay: 5.0e-4        # ↑ from 2e-4 (digit confusion ≈ overfit symptom)
+  betas: [0.9, 0.98]          # ↓ beta2 (transformer-style, helps CTC stability)
+  eps: 1.0e-8
+  scheduler: onecycle         # onecycle | cosine | cosine_warm_restart
+  warmup_epochs: 8            # ↑ from 5 (CTC alignment phase)
+  pct_start: 0.10             # for OneCycleLR
+  div_factor: 25.0
+  final_div_factor: 1.0e4
+  grad_clip: 1.0              # ↓ from 3.0; with AMP + bn this is enough
+
+# ----------------------------- Train ----------------------------
+train:
+  batch_size: 64              # per-GPU
+  grad_accum_steps: 2         # effective batch = 128
+  epochs: 250
+  amp: true                   # bf16 if A100/Hopper, else fp16
+  amp_dtype: bf16             # 'bf16' | 'fp16'
+  channels_last: true
+  ema: true
+  ema_decay: 0.9995           # ↑ from 0.999 (longer training)
+  ema_warmup_steps: 1000      # don't update EMA before this many steps
+  swa: true                   # Stochastic Weight Averaging in last 20% of epochs
+  swa_start_pct: 0.80
+  swa_lr: 5.0e-4
+  early_stop_patience: 30
+  early_stop_metric: cer      # 'cer' | 'seq_acc'
+  log_every: 50
+  ckpt_every_epoch: 10
+  resume: null
+  ddp: false
+  compile: false              # torch.compile (PyTorch 2.x); set false on Kaggle
+
+# ----------------------------- Augmentation ----------------------------
+augment:
+  preset: heavy_ocr           # ['light_ocr' | 'medium_ocr' | 'heavy_ocr']
+  # Manual overrides (see augmentation_v2.py for full list)
+  rotate_limit: 6
+  shear_limit: 6
+  perspective_scale: [0.02, 0.08]
+  motion_blur_limit: 9
+  gauss_noise_var: [10.0, 70.0]
+  iso_noise_intensity: [0.1, 0.6]
+  jpeg_quality: [25, 90]
+  brightness_limit: 0.25
+  contrast_limit: 0.25
+  random_shadow_prob: 0.30
+  random_rain_prob: 0.10
+  random_fog_prob: 0.10
+  coarse_dropout_max_holes: 4
+  random_erasing_prob: 0.25
+  cutout_p: 0.20
+  # mixup/cutmix DISABLED — they break CTC label distribution.
+
+# ----------------------------- Output ----------------------------
+output:
+  dir: runs/crnn_v2
+  tensorboard: true
+  wandb: false
+  save_topk: 3                # keep top-3 checkpoints by CER
